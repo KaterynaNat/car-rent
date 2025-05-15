@@ -12,35 +12,36 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  color: var(--white);
+  font-family: var(--font-family);
   position: relative;
   overflow: hidden;
 }
 
 .heading {
+  margin-top: 504px;
   margin-bottom: 16px;
-  margin-top: 436px;
   font-weight: 700;
   font-size: 60px;
   line-height: 1.2;
 }
 
 .description {
-  margin-bottom: 40px;
   font-weight: 600;
+  margin-bottom: 40px;
   font-size: 24px;
   line-height: 1.33;
 }
 
 .btn {
+  font-weight: 600;
   width: 276px;
   height: 44px;
   padding: 12px 88px;
-  font-weight: 600;
   font-size: 16px;
   line-height: 1.25;
-  color: #fff;
-  background-color: #3470ff;
+  color: var(--white);
+  background-color: var(--button);
   text-decoration: none;
   border-radius: 12px;
   transition: background-color 0.3s ease;
@@ -51,5 +52,5 @@
 }
 
 .btn:hover {
-  background-color: #0b44cd;
+  background-color: var(--button-hover);
 }

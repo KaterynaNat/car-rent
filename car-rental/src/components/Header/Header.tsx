@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
+import logo from "../../assets/Logo.svg";
 
 type HeaderProps = {
   showFavorites?: boolean;
@@ -10,7 +11,7 @@ const Header = ({ showFavorites = false }: HeaderProps) => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          Rental<span>Car</span>
+          <img src={logo} alt="RentalCar logo" className={styles.logoImage} />
         </Link>
 
         <nav className={styles.nav}>

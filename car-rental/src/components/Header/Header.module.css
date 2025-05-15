@@ -32,14 +32,14 @@
 }
 
 .nav a {
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
   font-family: var(--font-family);
-  text-align: center;
-  color: var(--button-hover);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--main);
+  text-decoration: none;
   transition: color 0.3s ease;
+  background: var(--badges);
 }
 
 .nav a:hover,

@@ -1,10 +1,10 @@
 .header {
   height: 68px;
-  background-color: #f9f9f9;
   padding: 26 0px;
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
+  background: var(--badges);
 }
 
 .container {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
 import React from "react";
-import Header from "../components/Header/Header";
+import Header from "../../components/Header/Header";
 
 function HomePage(): React.ReactElement {
   return (

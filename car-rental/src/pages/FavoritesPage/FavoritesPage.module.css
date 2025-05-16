@@ -1,0 +1,44 @@
+.favoritesContainer {
+  padding: 32px 120px;
+}
+
+.favoritesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.favoritesTitle {
+  font-size: 24px;
+  color: #101828;
+}
+
+.clearFavoritesButton {
+  padding: 8px 16px;
+  background: #ff4d4f;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.clearFavoritesButton:hover {
+  background: #d9363e;
+}
+
+.favoritesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 20px;
+}
+
+.noFavorites,
+.favoritesError {
+  text-align: center;
+  font-size: 16px;
+  color: #666;
+}

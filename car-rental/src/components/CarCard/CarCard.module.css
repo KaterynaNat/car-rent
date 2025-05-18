@@ -40,6 +40,10 @@
   color: var(--main);
 }
 
+.year {
+  color: var(--main);
+}
+
 .modelHighlight {
   color: var(--button);
 }

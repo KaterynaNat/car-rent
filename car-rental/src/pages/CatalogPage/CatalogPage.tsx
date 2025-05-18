@@ -16,6 +16,7 @@ import Filter from "../../components/CarFilter/CarFilter";
 import CarCard from "../../components/CarCard/CarCard";
 import styles from "./CatalogPage.module.css";
 import type { AppDispatch } from "../../redux/store";
+import Loader from "../../components/Loader/Loader";
 
 const CatalogPage = (): JSX.Element => {
   const dispatch: AppDispatch = useDispatch();
@@ -49,6 +50,10 @@ const CatalogPage = (): JSX.Element => {
     dispatch(incrementPage());
     dispatch(fetchCars({ page: page + 1, filters }));
   };
+
+  if (isLoading && cars.length === 0) {
+    return <Loader loading={true} />;
+  }
 
   return (
     <section className={styles.container}>

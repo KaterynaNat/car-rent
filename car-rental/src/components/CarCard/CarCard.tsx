@@ -47,9 +47,8 @@ const CarCard = ({ car }: CarCardProps): JSX.Element => {
         <div className={styles.topLine}>
           <h2 className={styles.name}>
             {car.brand}{" "}
-            <span className={styles.modelHighlight}>
-              {car.model}, {car.year}
-            </span>
+            <span className={styles.modelHighlight}>{car.model},</span>{" "}
+            <span className={styles.year}>{car.year}</span>
           </h2>
           <p className={styles.rate}>${car.rentalPrice}</p>
         </div>

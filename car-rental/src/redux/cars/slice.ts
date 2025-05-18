@@ -18,6 +18,7 @@ const initialState: CarsState = {
   totalPages: 0,
   showFavorites: false,
   isLoading: false,
+  isLoaded: false,
   isError: null,
 };
 
@@ -75,6 +76,7 @@ const carsSlice = createSlice({
         }
         state.totalPages = action.payload.totalPages;
         state.isLoading = false;
+        state.isLoaded = true;
       })
       .addCase(fetchBrands.fulfilled, (state, action) => {
         state.brands = action.payload;
@@ -89,6 +91,7 @@ const carsSlice = createSlice({
         (state) => {
           state.isLoading = true;
           state.isError = null;
+          state.isLoaded = false;
         }
       )
       .addMatcher(
@@ -99,6 +102,7 @@ const carsSlice = createSlice({
         ),
         (state, action) => {
           state.isLoading = false;
+          state.isLoaded = true;
           state.isError = action.payload as string;
         }
       );

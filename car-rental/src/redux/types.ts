@@ -35,4 +35,5 @@ export interface CarsState {
   showFavorites: boolean;
   isLoading: boolean;
   isError: string | null;
+  isLoaded: boolean;
 }

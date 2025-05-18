@@ -25,3 +25,5 @@ export const selectVisibleCars = createSelector(
       ? cars.filter((car) => favorites.some((fav) => fav.id === car.id))
       : cars
 );
+
+export const selectIsLoaded = (state: RootState) => state.cars.isLoaded;

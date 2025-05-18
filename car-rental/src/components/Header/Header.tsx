@@ -1,12 +1,13 @@
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/cars/selectors";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 import logo from "../../assets/Logo.svg";
 
-type HeaderProps = {
-  showFavorites?: boolean;
-};
+const Header = () => {
+  const favorites = useSelector(selectFavorites);
+  const hasFavorites = favorites.length > 0;
 
-const Header = ({ showFavorites = false }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -27,7 +28,7 @@ const Header = ({ showFavorites = false }: HeaderProps) => {
           >
             Catalog
           </NavLink>
-          {showFavorites && (
+          {hasFavorites && (
             <NavLink
               to="/favorites"
               className={({ isActive }) => (isActive ? styles.active : "")}

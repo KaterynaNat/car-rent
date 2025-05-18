@@ -1,48 +1,128 @@
+import { type JSX } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import styles from "./RentalForm.module.css";
+import type { FormikHelpers } from "formik";
 import toast from "react-hot-toast";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const validationSchema = Yup.object({
-  name: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
-  phone: Yup.string().required("Required"),
-});
+import { ToastFormNotification } from "../ToastFormNotification/ToastFormNotification";
+import rentalFormValidationSchema from "../../validationHelpers/rentalFormValidation";
+import styles from "./RentalForm.module.css";
 
-const RentalForm = () => {
+interface FormValues {
+  name: string;
+  email: string;
+  bookingDate: Date | null;
+  comment: string;
+}
+
+const initialValues: FormValues = {
+  name: "",
+  email: "",
+  bookingDate: null,
+  comment: "",
+};
+
+const RentalForm = (): JSX.Element => {
+  const handleSubmit = (
+    values: FormValues,
+    { resetForm }: FormikHelpers<FormValues>
+  ) => {
+    const formattedData = {
+      name: values.name,
+      email: values.email,
+      bookingDate: values.bookingDate?.toLocaleDateString() || "-",
+      comment: values.comment || "-",
+    };
+
+    toast.success(
+      <ToastFormNotification
+        title="Rental request submitted:"
+        data={formattedData}
+      />,
+      {
+        duration: 5000,
+        style: {
+          background: "#3470ff",
+          color: "#fff",
+          borderRadius: "8px",
+          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
+          fontSize: "20px",
+        },
+      }
+    );
+
+    resetForm();
+  };
+
   return (
-    <Formik
-      initialValues={{ name: "", email: "", phone: "" }}
-      validationSchema={validationSchema}
-      onSubmit={(_, { resetForm }) => {
-        toast.success("Booking successful!");
-        resetForm();
-      }}
-    >
-      <Form className={styles.form}>
-        <label>
-          Name
-          <Field name="name" type="text" />
-          <ErrorMessage name="name" component="div" className={styles.error} />
-        </label>
+    <div className={styles.block}>
+      <h3 className={styles.title}>Book your car now</h3>
+      <p className={styles.subtitle}>
+        Stay connected! We are always ready to help you.
+      </p>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={rentalFormValidationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ setFieldValue, values }) => (
+          <Form className={styles.form}>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Name*"
+              className={styles.input}
+            />
+            <ErrorMessage
+              name="name"
+              component="div"
+              className={styles.error}
+            />
 
-        <label>
-          Email
-          <Field name="email" type="email" />
-          <ErrorMessage name="email" component="div" className={styles.error} />
-        </label>
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email*"
+              className={styles.input}
+            />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className={styles.error}
+            />
 
-        <label>
-          Phone
-          <Field name="phone" type="tel" />
-          <ErrorMessage name="phone" component="div" className={styles.error} />
-        </label>
+            <DatePicker
+              selected={values.bookingDate}
+              onChange={(date: Date | null) =>
+                setFieldValue("bookingDate", date)
+              }
+              placeholderText="Booking Date"
+              className={styles.input}
+              dateFormat="MM/dd/yyyy"
+              calendarClassName="custom-datepicker"
+              wrapperClassName={styles.dateWrap}
+            />
+            <ErrorMessage
+              name="bookingDate"
+              component="div"
+              className={styles.error}
+            />
 
-        <button type="submit" className={styles.submitBtn}>
-          Rent now
-        </button>
-      </Form>
-    </Formik>
+            <Field
+              as="textarea"
+              name="comment"
+              placeholder="Comment"
+              className={styles.textarea}
+            />
+
+            <button type="submit" className={styles.submitBtn}>
+              Send
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </div>
   );
 };
 

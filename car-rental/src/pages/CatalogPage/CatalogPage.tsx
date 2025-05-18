@@ -51,20 +51,22 @@ const CatalogPage = (): JSX.Element => {
   };
 
   return (
-    <section className={styles.catalogWrapper}>
-      <Filter onSearch={handleSearch} />
+    <section className={styles.container}>
+      <div className={styles.filterContainer}>
+        <Filter onSearch={handleSearch} />
+      </div>
 
       {cars.length === 0 && !isLoading && (
-        <div className={styles.emptyMessage}>
+        <div className={styles.noResults}>
           <p>No results found.</p>
           <p>Please adjust your filters and try again.</p>
         </div>
       )}
 
-      {isError && <p className={styles.errorText}>Error: {isError}</p>}
+      {isError && <p className={styles.error}>Error: {isError}</p>}
 
-      <div className={styles.cardsGridWrapper}>
-        <ul className={styles.cardsGrid}>
+      <div className={styles.gridContainer}>
+        <ul className={styles.grid}>
           {cars.map((car) => (
             <li key={car.id}>
               <CarCard car={car} />
@@ -74,7 +76,7 @@ const CatalogPage = (): JSX.Element => {
       </div>
 
       {hasMore && !isLoading && (
-        <button className={styles.loadBtn} onClick={handleLoadMore}>
+        <button className={styles.loadMoreButton} onClick={handleLoadMore}>
           Load More
         </button>
       )}

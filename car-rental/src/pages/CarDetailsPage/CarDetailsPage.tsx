@@ -10,7 +10,8 @@ import {
 import { fetchCarById } from "../../redux/cars/operations";
 import RentalForm from "../../components/RentalForm/RentalForm";
 import Loader from "../../components/Loader/Loader";
-import styles from "./CarDetails.module.css";
+import CarDetailsInfo from "../../components/CarDetailsInfo/CarDetailsInfo";
+import styles from "./CarDetailsPage.module.css";
 import type { AppDispatch } from "../../redux/store";
 
 const CarDetailsPage = (): JSX.Element => {
@@ -27,67 +28,25 @@ const CarDetailsPage = (): JSX.Element => {
   }, [dispatch, id]);
 
   if (isLoading) return <Loader loading={true} />;
+  if (isError) return <p className={styles.errorText}>Error: {isError}</p>;
+  if (!car) return <p className={styles.errorText}>Car not found</p>;
 
   return (
     <div className={styles.container}>
-      {isError && <p className={styles.errorText}>Error: {isError}</p>}
-      {!car && !isLoading && <p className={styles.errorText}>Car not found</p>}
-      {car && (
-        <div className={styles.detailsWrapper}>
-          <div className={styles.leftSide}>
-            <img
-              src={car.img}
-              alt={`${car.brand} ${car.model}`}
-              className={styles.carImage}
-            />
-            <RentalForm />
-          </div>
-
-          <div className={styles.rightSide}>
-            <h2
-              className={styles.title}
-            >{`${car.brand} ${car.model}, ${car.year}`}</h2>
-            <p className={styles.description}>{car.description}</p>
-
-            <ul className={styles.specsList}>
-              <li>Type: {car.type}</li>
-              <li>Fuel Consumption: {car.fuelConsumption}</li>
-              <li>Engine Size: {car.engineSize}</li>
-              <li>Rental Price: {car.rentalPrice}</li>
-              <li>Mileage: {car.mileage.toLocaleString()} km</li>
-              <li>Address: {car.address}</li>
-              <li>Rental Company: {car.rentalCompany}</li>
-            </ul>
-
-            <h3>Accessories:</h3>
-            <ul className={styles.chipList}>
-              {car.accessories.map((item, index) => (
-                <li key={index} className={styles.chip}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <h3>Functionalities:</h3>
-            <ul className={styles.chipList}>
-              {car.functionalities.map((item, index) => (
-                <li key={index} className={styles.chip}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-
-            <h3>Rental Conditions:</h3>
-            <ul className={styles.chipList}>
-              {car.rentalConditions.map((item, index) => (
-                <li key={index} className={styles.chip}>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className={styles.detailsWrapper}>
+        {/* LEFT SIDE */}
+        <div className={styles.leftSide}>
+          <img
+            src={car.img}
+            alt={`${car.brand} ${car.model}`}
+            className={styles.carImage}
+          />
+          <RentalForm />
         </div>
-      )}
+
+        {/* RIGHT SIDE - Extracted Component */}
+        <CarDetailsInfo car={car} />
+      </div>
     </div>
   );
 };

@@ -19,52 +19,65 @@ const CarFilter = ({ onSearch }: FilterProps) => {
   };
 
   return (
-    <div className={styles.filter}>
-      <select
-        name="brand"
-        value={filters.brand}
-        onChange={handleChange}
-        className={styles.input}
-      >
-        <option value="">Brand</option>
-        {brands.map((brand) => (
-          <option key={brand} value={brand}>
-            {brand}
-          </option>
-        ))}
-      </select>
+    <form className={styles.panel} onSubmit={(e) => e.preventDefault()}>
+      <label className={styles.group}>
+        Car brand
+        <select
+          name="brand"
+          value={filters.brand}
+          onChange={handleChange}
+          className={styles.select}
+        >
+          <option value="">Choose a brand</option>
+          {brands.map((brand) => (
+            <option key={brand} value={brand}>
+              {brand}
+            </option>
+          ))}
+        </select>
+      </label>
 
-      <input
-        type="text"
-        name="rentalPrice"
-        value={filters.rentalPrice}
-        placeholder="Price up to $"
-        onChange={handleChange}
-        className={styles.input}
-      />
+      <label className={styles.group}>
+        Price/ 1 hour
+        <select
+          name="rentalPrice"
+          value={filters.rentalPrice}
+          onChange={handleChange}
+          className={styles.select}
+        >
+          <option value="">Choose a price</option>
+          <option value="10">Up to $10</option>
+          <option value="20">Up to $20</option>
+          <option value="30">Up to $30</option>
+        </select>
+      </label>
 
-      <input
-        type="text"
-        name="minMileage"
-        value={filters.minMileage}
-        placeholder="Min mileage"
-        onChange={handleChange}
-        className={styles.input}
-      />
-
-      <input
-        type="text"
-        name="maxMileage"
-        value={filters.maxMileage}
-        placeholder="Max mileage"
-        onChange={handleChange}
-        className={styles.input}
-      />
+      <label className={styles.group}>
+        Car mileage / km
+        <div className={styles.mileageBox}>
+          <input
+            type="text"
+            name="minMileage"
+            placeholder="From"
+            value={filters.minMileage}
+            onChange={handleChange}
+            className={styles.mileageField}
+          />
+          <input
+            type="text"
+            name="maxMileage"
+            placeholder="To"
+            value={filters.maxMileage}
+            onChange={handleChange}
+            className={styles.mileageField}
+          />
+        </div>
+      </label>
 
       <button onClick={onSearch} className={styles.searchBtn}>
         Search
       </button>
-    </div>
+    </form>
   );
 };
 

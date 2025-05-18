@@ -24,7 +24,7 @@ const FavoritesPage = (): JSX.Element => {
   if (isLoading) {
     return (
       <div className={styles.favoritesContainer}>
-        <Loader />
+        <Loader loading={true} />
       </div>
     );
   }

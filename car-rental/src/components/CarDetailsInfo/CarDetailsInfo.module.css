@@ -1,48 +1,21 @@
-.container {
-  padding: 84px 0;
-  max-width: 1280px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.detailsWrapper {
-  display: flex;
-  gap: 72px;
-  margin: 0 auto;
-}
-
-.leftSide {
-  flex: 0 0 640px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.carImage {
-  border-radius: 19px;
-  width: 640px;
-  height: 512px;
-  object-fit: cover;
-  margin-bottom: 48px;
-}
-
-.rightSide {
+.info_rightColumn {
   max-width: 488px;
+}
+
+.info_wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.carTitle {
+.info_title {
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33333;
   color: #101828;
   margin-bottom: 8px;
-  margin-top: 20px;
 }
 
-.carId {
+.info_id {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -50,30 +23,27 @@
   margin-bottom: 8px;
 }
 
-.location {
+.info_locationRow {
   display: flex;
   gap: 4px;
   align-items: center;
   color: #101828;
 }
 
-.icon {
+.info_icon {
   stroke: #101828;
-  display: flex;
-  align-self: center;
-  justify-content: center;
   width: 16px;
   height: 16px;
 }
 
-.carMileage {
+.info_mileage {
   color: #101828;
   margin-left: 20px;
   margin-top: 8px;
   margin-bottom: 16px;
 }
 
-.carPrice {
+.info_price {
   font-weight: 600;
   font-size: 24px;
   line-height: 1.33333;
@@ -81,7 +51,7 @@
   margin-bottom: 32px;
 }
 
-.carDescription {
+.info_description {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -89,13 +59,13 @@
   margin-bottom: 60px;
 }
 
-.carListWrapContainer {
+.info_sectionsWrapper {
   display: flex;
   flex-direction: column;
-  gap: 87px;
+  gap: 90px;
 }
 
-.carSubtitle {
+.info_subtitle {
   font-weight: 600;
   font-size: 20px;
   line-height: 1.2;
@@ -103,7 +73,7 @@
   margin-bottom: 20px;
 }
 
-.carListItem {
+.info_listItem {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
@@ -112,14 +82,4 @@
   display: flex;
   gap: 8px;
   align-items: center;
-}
-
-.carListItem:last-child {
-  margin-bottom: 0;
-}
-
-.errorText {
-  color: #ff0000;
-  text-align: center;
-  padding: 2rem;
 }

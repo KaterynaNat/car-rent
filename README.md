@@ -45,12 +45,14 @@ RentalCar — це фронтенд веб-застосунок для комп�
 # npm run dev
 
 
-🌐 Live Demo
-🔗 Переглянути на Vercel
+### 🌐 Live Demo  
+🔗 [Переглянути на Vercel](https://car-rent-bice.vercel.app)
 
-👤 Автор
-Kateryna Naturkach
-📧 kate.naturkach@gmail.com
-💼 LinkedIn
-💻 GitHub
+---
+
+### 👤 Автор  
+**Kateryna Naturkach**  
+📧 [kate.naturkach@gmail.com](mailto:kate.naturkach@gmail.com)  
+💼 [LinkedIn](https://linkedin.com/in/kateryna-naturkach)  
+💻 [GitHub](https://github.com/KaterynaNat)
 
